@@ -1,5 +1,5 @@
-<RCC>
-  <qresource prefix="new">
-    <file>images/lukou.png</file>
-  </qresource>
+<!DOCTYPE RCC><RCCversion="1.0">
+<qresource>
+   <file>images/lukou.png</file>
+</qresource>
 </RCC>
