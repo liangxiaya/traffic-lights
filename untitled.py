@@ -145,6 +145,8 @@ class Ui_Dialog(QWidget):
         # if self.start.isEnabled():
         self.time.stop()
         self.water_time.stop()
+    def Action_uncount(self):
+        self.count
     # def Action_submission(self):
     # def
     def Action_submission(self):
@@ -301,3 +303,5 @@ class Ui_Dialog(QWidget):
             # self.count = 10
             self.count = 3   #测试
             self.time.start()
+
+    def Count_time(self):

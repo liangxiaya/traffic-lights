@@ -13,18 +13,18 @@ from PyQt5.QtCore import QTimer
 
 
 import untitled
-
+#--------------------------------------------------------------------   
 class Basic_function:
-    def __init__(self,value_of_hunger, value_of_water):
+    def __init__(self,redlight_count, greanlight_count):
         # 初始化属性设置
-        self.value_of_hunger = value_of_hunger
-        self.value_of_water = value_of_water
+        self.redlight_count = redlight_count
+        self.greanlight_count = greanlight_count
 
     def get_descriptive_info(self):
         # 返回属性值
         #     info = f'饥饿值：{self.value_of_hunger}\n水份：{self.value_of_water}'
 
-        info = [self.value_of_hunger,self.value_of_water]
+        info = [self.redlight_count,self.greanlight_count]
         print(info)
 
         # print("饥饿值: ", info['self.value_h'])
@@ -172,6 +172,10 @@ a = Basic_function(water, hunger)
 print("**********start**********")
 a.local_time()
 var = 1
+redlight_count=0
+greanlight_count=0
+
+if
 
 # while var ==1:
 # a.get_descriptive_info()
