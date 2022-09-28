@@ -13,7 +13,7 @@ from PyQt5.QtCore import QTimer
 
 
 import untitled
-#--------------------------------------------------------------------   
+#--------------------------------------------------------------------
 class Basic_function:
     def __init__(self,redlight_count, greanlight_count):
         # 初始化属性设置
@@ -33,25 +33,30 @@ class Basic_function:
         return info
 
 
-    def changed_hunger(self, value_of_hunger):
+    # def changed_lights(self, redlight_count):
+    #     #将读数递减
+    #         time.sleep(1)
+    #         self.redlight_count = self.redlight_count-reduce_lights
+    #         print(redlight_count)
+    #         return self.redlight_count
+    #------------------------------------------  可以优化自减
+    def changed_lights(self, redlight_count):
         #将读数递减
             time.sleep(1)
-            self.value_of_hunger = self.value_of_hunger-reduce_hunger
-            print(value_of_hunger)
-            return self.value_of_hunger
-
+            self.redlight_count = self.redlight_count-1
+            print(redlight_count)
+            return self.redlight_count
     # if self.value_of_hunger == 0:
-
-    def changed_water(self, value_of_water):
-            time.sleep(1)
-            self.value_of_water =self.value_of_water-reduce_water
-            if a.value_of_water < 0:
-                a.value_of_water = 0
-                # print(a.value_of_water)
-                print("由于口渴值为0  口渴而死")
-                sys.exit(0)
-                # break
-            return self.value_of_water
+    #
+    # def changed_water(self, value_of_water):
+    #         time.sleep(1)
+    #         self.value_of_water =self.value_of_water-reduce_water
+    #         if a.value_of_water < 0:
+    #             a.value_of_water = 0
+    #             # print(a.value_of_water)
+    #             sys.exit(0)
+    #             # break
+    #         return self.value_of_water
 
             # if self.value_of_water == 0:
     def local_time(self):
@@ -166,8 +171,7 @@ class Basic_function:
 
 water = 100
 hunger = 100
-reduce_hunger = 2
-reduce_water = 3
+reduce_lights = 1
 a = Basic_function(water, hunger)
 print("**********start**********")
 a.local_time()
@@ -175,23 +179,24 @@ var = 1
 redlight_count=0
 greanlight_count=0
 
-if
+if a.redlight_count == 0:
+    print("红灯结束")
 
 # while var ==1:
 # a.get_descriptive_info()
 # time.sleep(3)                                            调试关闭
-if a.value_of_water < 30:
-    print("**我有点渴了**")
-    # time.sleep(1)
-if a.value_of_hunger < 30:
-    print("**我有点饿了**")
-    # time.sleep(1)
-if a.value_of_hunger < 0:
-    a.value_of_hunger=0
-    print(a.value_of_hunger)
-    print("由于饥饿而死")
-    # sys.exit(0)
-    # break
+# if a.value_of_water < 30:
+#     print("**我有点渴了**")
+#     # time.sleep(1)
+# if a.value_of_hunger < 30:
+#     print("**我有点饿了**")
+#     # time.sleep(1)
+# if a.value_of_hunger < 0:
+#     a.value_of_hunger=0
+#     print(a.value_of_hunger)
+#     print("由于饥饿而死")
+#     # sys.exit(0)
+#     # break
     # if a.value_of_water < 0:
     #     a.value_of_water=0
     #     print(a.value_of_water)

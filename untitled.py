@@ -305,3 +305,4 @@ class Ui_Dialog(QWidget):
             self.time.start()
 
     def Count_time(self):
+        self.time
