@@ -9,9 +9,16 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QTimer
+import sys
+import time
+from main import Basic_function
+# class Ui_Dialog(object):
+from PyQt5.QtWidgets import QApplication, QWidget , QVBoxLayout , QListView, QMessageBox
+from PyQt5.QtCore import QStringListModel
+import mainmain
 
-
-class Ui_Dialog(object):
+class Ui_Dialog(QWidget):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(618, 479)
@@ -19,33 +26,46 @@ class Ui_Dialog(object):
         self.buttonBox.setGeometry(QtCore.QRect(330, 520, 341, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setObjectName("buttonBox")
-        self.start = QtWidgets.QPushButton(Dialog)
-        self.start.setGeometry(QtCore.QRect(20, 10, 81, 41))
-        self.start.setObjectName("start")
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(20, 80, 91, 31))
-        self.label.setObjectName("label")
+        self.start_box = QtWidgets.QPushButton(Dialog)
+        self.start_box.setGeometry(QtCore.QRect(20, 10, 81, 41))
+        self.start_box.setObjectName("start_box")
+        self.left_light_label = QtWidgets.QLabel(Dialog)
+        self.left_light_label.setGeometry(QtCore.QRect(20, 80, 91, 31))
+        self.left_light_label.setObjectName("left_light_label")
         self.pushButton = QtWidgets.QPushButton(Dialog)
         self.pushButton.setGeometry(QtCore.QRect(510, 440, 75, 23))
         self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_2.setGeometry(QtCore.QRect(120, 10, 81, 41))
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.label_2 = QtWidgets.QLabel(Dialog)
-        self.label_2.setGeometry(QtCore.QRect(240, 80, 61, 31))
-        self.label_2.setObjectName("label_2")
-        self.pushButton_5 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_5.setGeometry(QtCore.QRect(60, 120, 100, 100))
-        self.pushButton_5.setMaximumSize(QtCore.QSize(100, 100))
-        self.pushButton_5.setAccessibleDescription("")
-        self.pushButton_5.setStyleSheet("QPushButton{\n"
+        self.zanting_box = QtWidgets.QPushButton(Dialog)
+        self.zanting_box.setGeometry(QtCore.QRect(120, 10, 81, 41))
+        self.zanting_box.setObjectName("zanting_box")
+        self.mid_light_label = QtWidgets.QLabel(Dialog)
+        self.mid_light_label.setGeometry(QtCore.QRect(240, 80, 61, 31))
+        self.mid_light_label.setObjectName("mid_light_label")
+        self.left_lightbox = QtWidgets.QPushButton(Dialog)
+        self.left_lightbox.setGeometry(QtCore.QRect(60, 120, 100, 100))
+        self.left_lightbox.setMaximumSize(QtCore.QSize(100, 100))
+        self.left_lightbox.setAccessibleDescription("")
+        self.left_lightbox.setStyleSheet("QPushButton{\n"
 "background-color:rgb(255,0,0);\n"
 "color:white;\n"
 "brorder-radius:50px;\n"
 "border:2px groove gray;\n"
 "border-style:outset;\n"
 "}")
-        self.pushButton_5.setObjectName("pushButton_5")
+        self.reduce_time = 1
+        self.reduce_time=QTimer(self)
+        self.reduce_time.setInterval(1000)
+        self.reduce_time.timeout.connect(self.Refresh_water)
+
+
+        self.start_box.clicked.connect(self.Action)
+
+
+
+
+
+
+        self.left_lightbox.setObjectName("left_lightbox")
         self.comboBox = QtWidgets.QComboBox(Dialog)
         self.comboBox.setGeometry(QtCore.QRect(160, 90, 69, 22))
         self.comboBox.setObjectName("comboBox")
@@ -56,30 +76,30 @@ class Ui_Dialog(object):
         self.comboBox_2.setObjectName("comboBox_2")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
-        self.pushButton_6 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_6.setGeometry(QtCore.QRect(230, 120, 100, 100))
-        self.pushButton_6.setMaximumSize(QtCore.QSize(100, 100))
-        self.pushButton_6.setAccessibleDescription("")
-        self.pushButton_6.setStyleSheet("QPushButton{\n"
+        self.mid_lightbox = QtWidgets.QPushButton(Dialog)
+        self.mid_lightbox.setGeometry(QtCore.QRect(230, 120, 100, 100))
+        self.mid_lightbox.setMaximumSize(QtCore.QSize(100, 100))
+        self.mid_lightbox.setAccessibleDescription("")
+        self.mid_lightbox.setStyleSheet("QPushButton{\n"
 "background-color:rgb(255,0,0);\n"
 "color:white;\n"
 "brorder-radius:50px;\n"
 "border:2px groove gray;\n"
 "border-style:outset;\n"
 "}")
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.pushButton_7 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_7.setGeometry(QtCore.QRect(400, 120, 100, 100))
-        self.pushButton_7.setMaximumSize(QtCore.QSize(100, 100))
-        self.pushButton_7.setAccessibleDescription("")
-        self.pushButton_7.setStyleSheet("QPushButton{\n"
+        self.mid_lightbox.setObjectName("mid_lightbox")
+        self.right_lightbox = QtWidgets.QPushButton(Dialog)
+        self.right_lightbox.setGeometry(QtCore.QRect(400, 120, 100, 100))
+        self.right_lightbox.setMaximumSize(QtCore.QSize(100, 100))
+        self.right_lightbox.setAccessibleDescription("")
+        self.right_lightbox.setStyleSheet("QPushButton{\n"
 "background-color:rgb(255,0,0);\n"
 "color:white;\n"
 "brorder-radius:50px;\n"
 "border:2px groove gray;\n"
 "border-style:outset;\n"
 "}")
-        self.pushButton_7.setObjectName("pushButton_7")
+        self.right_lightbox.setObjectName("right_lightbox")
         self.comboBox_3 = QtWidgets.QComboBox(Dialog)
         self.comboBox_3.setGeometry(QtCore.QRect(500, 90, 69, 22))
         self.comboBox_3.setObjectName("comboBox_3")
@@ -90,11 +110,21 @@ class Ui_Dialog(object):
         self.comboBox_4.setObjectName("comboBox_4")
         self.comboBox_4.addItem("")
         self.comboBox_4.addItem("")
-        self.comboBox_4.setItemText(1, "")
+        self.comboBox_4.addItem("")
+        self.comboBox_4.setItemText(2, "")
         self.comboBox_5 = QtWidgets.QComboBox(Dialog)
         self.comboBox_5.setGeometry(QtCore.QRect(340, 60, 69, 22))
         self.comboBox_5.setObjectName("comboBox_5")
         self.comboBox_5.addItem("")
+        self.comboBox_6 = QtWidgets.QComboBox(Dialog)
+        self.comboBox_6.setGeometry(QtCore.QRect(500, 60, 69, 22))
+        self.comboBox_6.setObjectName("comboBox_6")
+        self.comboBox_6.addItem("")
+        self.comboBox_6.addItem("")
+        self.comboBox_6.addItem("")
+        self.right_light_label = QtWidgets.QLabel(Dialog)
+        self.right_light_label.setGeometry(QtCore.QRect(420, 80, 61, 31))
+        self.right_light_label.setObjectName("right_light_label")
 
         self.retranslateUi(Dialog)
         self.buttonBox.accepted.connect(Dialog.accept) # type: ignore
@@ -105,19 +135,89 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.start.setText(_translate("Dialog", "start"))
-        self.label.setText(_translate("Dialog", "灯运行了："))
+        self.start_box.setText(_translate("Dialog", "start"))
+        self.left_light_label.setText(_translate("Dialog", "灯运行了："))
         self.pushButton.setText(_translate("Dialog", "关闭窗口"))
-        self.pushButton_2.setText(_translate("Dialog", "暂停"))
-        self.label_2.setText(_translate("Dialog", "灯运行了："))
-        self.pushButton_5.setText(_translate("Dialog", "灯还有0秒"))
+        self.zanting_box.setText(_translate("Dialog", "暂停"))
+        self.mid_light_label.setText(_translate("Dialog", "灯运行了："))
+        self.left_lightbox.setText(_translate("Dialog", "灯还有0秒"))
         self.comboBox.setItemText(0, _translate("Dialog", "绿灯"))
         self.comboBox.setItemText(1, _translate("Dialog", "红灯"))
         self.comboBox_2.setItemText(0, _translate("Dialog", "绿灯"))
         self.comboBox_2.setItemText(1, _translate("Dialog", "红灯"))
-        self.pushButton_6.setText(_translate("Dialog", "灯还有0秒"))
-        self.pushButton_7.setText(_translate("Dialog", "灯还有0秒"))
-        self.comboBox_3.setItemText(0, _translate("Dialog", "红灯"))
-        self.comboBox_3.setItemText(1, _translate("Dialog", "绿灯"))
-        self.comboBox_4.setItemText(0, _translate("Dialog", "左转"))
+        self.mid_lightbox.setText(_translate("Dialog", "灯还有0秒"))
+        self.right_lightbox.setText(_translate("Dialog", "灯还有0秒"))
+        self.comboBox_3.setItemText(0, _translate("Dialog", "绿灯"))
+        self.comboBox_3.setItemText(1, _translate("Dialog", "红灯"))
+        self.comboBox_4.setItemText(0, _translate("Dialog", "空"))
+        self.comboBox_4.setItemText(1, _translate("Dialog", "左转"))
         self.comboBox_5.setItemText(0, _translate("Dialog", "直行"))
+        self.comboBox_6.setItemText(0, _translate("Dialog", "空"))
+        self.comboBox_6.setItemText(1, _translate("Dialog", "直行"))
+        self.comboBox_6.setItemText(2, _translate("Dialog", "右转"))
+        self.right_light_label.setText(_translate("Dialog", "灯运行了："))
+    def Action(self):
+        if self.start_box.isEnabled():
+            print("成功触发")
+            self.time.start
+            print("成功触发if判断")
+
+            self.reduce_time.start()
+            # self.start_box.setEnabled(False)
+
+    def Action_stop(self):
+        self.reduce_time.stop
+    def Action_left_light_time(self):
+        self.ui.start
+    def Action_left_red(self):
+        print("111111111111111111111111111")
+
+
+
+
+    # ------------------------若数值到0  测试切换输出
+    def Refresh_water(self):
+        self.left_light_label.setProperty("value", str(self.mainmain.redlight_count))
+        # self.mid_light_label.setProperty("value", str(self.mainmain.redlight_count))
+
+        # if self.water_count > 0:
+        #     # self.start.setText(str(self.count) + '秒')
+        #     self.water_Bar.setProperty("value", str(self.mainmain.value_of_water))
+        #     if self.mainmain.value_of_water < 45:  # 简易阈值
+        #         print("WARING")
+        #         self.list.append("WARING")
+        #     # main.Basic_function.changed_hunger(main.Basic_function.value_of_hunger)
+        #     # self.pushButton_3.setText("倒计时：",self.count)
+        #     self.label_2.setText("口渴值：" + str(self.mainmain.value_of_water))
+        #     print("water倒计时中" + str(self.water_count) + '秒')
+        #
+        #     self.water_count -= 1
+        #     self.pushButton_4.setText("倒计时：" + str(self.water_count))
+        #
+        #     # if self.count == 0:
+        #     #     self.changed_water()
+        # else:
+        #     # self.Action_stop()
+        #     self.water_time.stop()
+        #     self.list.append(self.info)
+        #     self.info = ["饥饿值:" + str(self.mainmain.value_of_hunger), "口渴值" + str(self.mainmain.value_of_water)]
+        #
+
+        self.left_light_label.setText("运行了：" + str(self.mainmain.redlight_count))
+        print("red倒计时中" + str(self.redlight_count) + '秒')
+            # print("饥饿值：" + str(self.mainmain.value_of_hunger))
+            # print("口渴值：" + str(self.mainmain.value_of_water))
+
+
+
+            # self.journal.setText(str(self.list))  # 可实现
+            # self.pushButton_4.setText("倒计时：" + str(self.water_count))
+            # self.mainmain.changed_water(self.mainmain.value_of_water)
+            # self.label_2.setText("口渴值：" + str(self.mainmain.value_of_water))
+            # # self.changed_water()
+            # # self.start.setEnabled(True)
+            # self.start.setText('开始')
+            # self.water_Bar.setProperty("value", str(self.mainmain.value_of_water))
+            # # self.count = 10
+            # self.water_count = 5  # 测试
+            # self.water_time.start()
