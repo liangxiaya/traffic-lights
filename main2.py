@@ -18,7 +18,6 @@ from main import Basic_function
 from PyQt5.QtWidgets import QApplication, QWidget , QVBoxLayout , QListView, QMessageBox
 from PyQt5.QtCore import QStringListModel
 import mainmain
-class Ui_Dialog(QWidget):
 
 
 class Ui_Dialog(object):
