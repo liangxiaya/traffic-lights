@@ -52,14 +52,19 @@ class Ui_Dialog(QWidget):
 "border:2px groove gray;\n"
 "border-style:outset;\n"
 "}")
-        self.reduce_time = 1
-        self.reduce_time=QTimer(self)
-        self.reduce_time.setInterval(1000)
-        self.reduce_time.timeout.connect(self.Refresh_water)
-
-
         self.start_box.clicked.connect(self.Action)
 
+        # self.reduce_time = 1
+        self.reduce_time=QTimer(self)
+        self.reduce_time.setInterval(1000)
+        self.reduce_time.timeout.connect(self.Refresh_light_time)
+
+
+
+
+        self.count = 3  #测试
+        self.time = QTimer(self)
+        self.time.setInterval(1000)
 
 
 
@@ -159,25 +164,44 @@ class Ui_Dialog(QWidget):
     def Action(self):
         if self.start_box.isEnabled():
             print("成功触发")
-            self.time.start
+            self.reduce_time.start
             print("成功触发if判断")
 
-            self.reduce_time.start()
+            self.time.start()
+            print("成功触发time判断")
+            self.reduce_time(1)
             # self.start_box.setEnabled(False)
 
+    def reduce_time(self):
+        totalTime = 5
+
+        if totalTime.isdigit():
+            print(totalTime)
+            totalTime = int(totalTime)
+            while totalTime > 0:
+                print('还剩%d秒' % totalTime)
+                time.sleep(1)
+                totalTime -= 1
+            print("时间到")
+        else:
+            print("请输入整数")
+        return 0
     def Action_stop(self):
         self.reduce_time.stop
-    def Action_left_light_time(self):
-        self.ui.start
-    def Action_left_red(self):
-        print("111111111111111111111111111")
-
-
-
+    # def Action_left_light_time(self):
+    #     self.ui.start
+    # def Action_left_red(self):
+    #     print("111111111111111111111111111")
+    def Refresh_light_time(self):
+        # self.left_light_label.setProperty("value", str(self.main.value_of_hunger))
+        print("正在自减红绿灯数值")
+        if self.redlight_count > 0:
+            self.left_light_label.setProperty("value", str(self.main.redlight_count))
 
     # ------------------------若数值到0  测试切换输出
     def Refresh_water(self):
-        self.left_light_label.setProperty("value", str(self.mainmain.redlight_count))
+        self.left_light_label.setProperty("value", str(self.main.redlight_count))
+        print("jinru ")
         # self.mid_light_label.setProperty("value", str(self.mainmain.redlight_count))
 
         # if self.water_count > 0:
