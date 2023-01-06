@@ -1,8 +1,14 @@
 class Basic_function:
-    def __init__(self,redlight_count, greanlight_count):
+    def __init__(self,left_light_count, midlight_count,rightlight_count):
         # 初始化属性设置
-        self.redlight_count = redlight_count
-        self.greanlight_count = greanlight_count
+        # self.redlight_count = redlight_count
+        self.left_light_count = left_light_count
+
+        # self.greanlight_count = greanlight_count
+        self.midlight_count = midlight_count
+
+        # self.rightlight_count = rightlight_count
+        self.rightlight_count = rightlight_count
 
     def get_descriptive_info(self):
         # 返回属性值

@@ -23,7 +23,7 @@ class Ui_Dialog(QWidget):
         Dialog.setObjectName("Dialog")
         Dialog.resize(618, 479)
 
-        self.data_model = Basic_function(1,20);
+        self.data_model = Basic_function(10,20,10);
 
         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
         self.buttonBox.setGeometry(QtCore.QRect(330, 520, 341, 32))
@@ -190,8 +190,19 @@ class Ui_Dialog(QWidget):
             # self.left_light_label.setProperty("value", str(self.data_model.redlight_count))
             print(self.data_model.redlight_count)
             # setProperty忘记作用   settext  文字+数值 非，
-            self.left_light_label.setText("左灯运行了："+str(self.data_model.redlight_count))
+
+            self.lights_count =1
+
+            self.left_light_label.setText("左灯运行了："+str(self.lights_count))
+            self.lights_count += 1
+
+        # 1.7凌晨
+            self.left_lightbox.setText("左灯还有："+str(self.data_model.redlight_count))
+            self.data_model.redlight_count -= 1
+
+
         else:
+            self.reduce_time.stop()
             print("over")
 
     # ------------------------若数值到0  测试切换输出
