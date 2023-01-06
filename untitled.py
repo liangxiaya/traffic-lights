@@ -22,7 +22,9 @@ class Ui_Dialog(QWidget):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(618, 479)
+
         self.data_model = Basic_function(1,20);
+
         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
         self.buttonBox.setGeometry(QtCore.QRect(330, 520, 341, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
@@ -158,10 +160,15 @@ class Ui_Dialog(QWidget):
         self.right_light_label.setText(_translate("Dialog", "灯运行了："))
     def Action(self):
         if self.start_box.isEnabled():
-            print("成功触发")
             self.reduce_time.start()
             print("成功触发if判断")
-
+    def Action_stop(self):
+        print("time stop")
+        self.reduce_time.stop()
+    # def Action_left_light_time(self):
+    #     self.ui.start
+    # def Action_left_red(self):
+    #     print("111111111111111111111111111")
     def reduce_time(self):
         totalTime = 5
 
@@ -176,22 +183,16 @@ class Ui_Dialog(QWidget):
         else:
             print("请输入整数")
         return 0
-    def Action_stop(self):
-        print("time stop")
-        self.reduce_time.stop()
-    # def Action_left_light_time(self):
-    #     self.ui.start
-    # def Action_left_red(self):
-    #     print("111111111111111111111111111")
     def Refresh_light_time(self):
         # self.left_light_label.setProperty("value", str(self.main.value_of_hunger))
         print("正在自减红绿灯数值")
         if self.data_model.redlight_count > 0:
-            #self.left_light_label.setProperty("value", str(self.main.redlight_count))
+            # self.left_light_label.setProperty("value", str(self.data_model.redlight_count))
             print(self.data_model.redlight_count)
-            self.left_light_label.setText(str(self.data_model.redlight_count))
+            # setProperty忘记作用   settext  文字+数值 非，
+            self.left_light_label.setText("左灯运行了："+str(self.data_model.redlight_count))
         else:
-            print(self.data_model.redlight_count)
+            print("over")
 
     # ------------------------若数值到0  测试切换输出
     def Refresh_water(self):
