@@ -163,20 +163,15 @@ class Ui_Dialog(QWidget):
         self.comboBox_6.setItemText(1, _translate("Dialog", "直行"))
         self.comboBox_6.setItemText(2, _translate("Dialog", "右转"))
         self.right_light_label.setText(_translate("Dialog", "灯运行了："))
-
         self.pushButton_5.setText(_translate("Dialog", "提交"))
         # self.label_4.setText(_translate("Dialog", "属性值更改："))
-
-
     def Action(self):
         if self.start_box.isEnabled():
             self.reduce_time.start()
-            print("成功触发if判断")
-
+            # print("成功触发if判断")
     def Action_stop(self):
         print("time stop")
         self.reduce_time.stop()
-
     # def Action_left_light_time(self):
     #     self.ui.start
     # def Action_left_red(self):
@@ -214,6 +209,7 @@ class Ui_Dialog(QWidget):
         # ------------------------若数值到0  测试切换输出
 
     def Action_submission(self):
+        self.data_model.left_light_count = int(self.change_left.)
         print("tijiaochenggong")
     def Refresh_water(self):
         self.left_light_label.setProperty("value", str(self.main.redlight_count))
