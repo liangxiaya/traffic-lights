@@ -134,6 +134,9 @@ class Ui_Dialog(QWidget):
         self.pushButton.clicked.connect(Dialog.close)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
+
+        self.pushButton_5.clicked.connect(self.Action_submission)
+
     # --------------------  1.7  4点  添加数值更改
 
     def retranslateUi(self, Dialog):
@@ -160,6 +163,10 @@ class Ui_Dialog(QWidget):
         self.comboBox_6.setItemText(1, _translate("Dialog", "直行"))
         self.comboBox_6.setItemText(2, _translate("Dialog", "右转"))
         self.right_light_label.setText(_translate("Dialog", "灯运行了："))
+
+        self.pushButton_5.setText(_translate("Dialog", "提交"))
+        # self.label_4.setText(_translate("Dialog", "属性值更改："))
+
 
     def Action(self):
         if self.start_box.isEnabled():
@@ -206,6 +213,8 @@ class Ui_Dialog(QWidget):
             print("over")
         # ------------------------若数值到0  测试切换输出
 
+    def Action_submission(self):
+        print("tijiaochenggong")
     def Refresh_water(self):
         self.left_light_label.setProperty("value", str(self.main.redlight_count))
         print("jinru ")
