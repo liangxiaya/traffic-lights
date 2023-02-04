@@ -209,11 +209,15 @@ class Ui_Dialog(QWidget):
         # ------------------------若数值到0  测试切换输出
 
     def Action_submission(self):
-        self.data_model.left_light_count = int(self.change_left.)
+        self.data_model.left_light_count = int(self.change_left.setProperty)
         print("tijiaochenggong")
     def Refresh_water(self):
         self.left_light_label.setProperty("value", str(self.main.redlight_count))
         print("jinru ")
+
+        self.mid_lightbox.setProperty("value",str(self.data_model.left_light_count))
+
+
         # self.mid_light_label.setProperty("value", str(self.mainmain.redlight_count))
         # if self.water_count > 0:
         #     # self.start.setText(str(self.count) + '秒')
