@@ -14,7 +14,6 @@ class Ui_Dialog(QWidget):
 
         self.data_model = Basic_function(10, 20, 10);
 
-
         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
         self.buttonBox.setGeometry(QtCore.QRect(330, 520, 341, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
@@ -50,6 +49,8 @@ class Ui_Dialog(QWidget):
         self.reduce_time = QTimer(self)
         self.reduce_time.setInterval(1000)
         self.reduce_time.timeout.connect(self.Refresh_light_time)
+        # self.reduce_time.timeout.connect(self.Refresh_mid_light_time)
+        # self.reduce_time.timeout.connect(self.Refresh_right_light_time)
 
         self.left_lightbox.setObjectName("left_lightbox")
         self.comboBox = QtWidgets.QComboBox(Dialog)
@@ -111,7 +112,6 @@ class Ui_Dialog(QWidget):
         self.right_light_label = QtWidgets.QLabel(Dialog)
         self.right_light_label.setGeometry(QtCore.QRect(420, 80, 61, 31))
         self.right_light_label.setObjectName("right_light_label")
-        # --------------------  1.7  4点  添加数值更改
         self.shuxing = QtWidgets.QLabel(Dialog)
         self.shuxing.setGeometry(QtCore.QRect(340, 250, 81, 41))
         self.shuxing.setObjectName("shuxing")
@@ -127,18 +127,13 @@ class Ui_Dialog(QWidget):
         self.pushButton_5 = QtWidgets.QPushButton(Dialog)
         self.pushButton_5.setGeometry(QtCore.QRect(540, 280, 51, 41))
         self.pushButton_5.setObjectName("pushButton_5")
-
         self.retranslateUi(Dialog)
         self.buttonBox.accepted.connect(Dialog.accept)  # type: ignore
         self.buttonBox.rejected.connect(Dialog.reject)  # type: ignore
         self.pushButton.clicked.connect(Dialog.close)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-
-
         self.pushButton_5.clicked.connect(self.Action_submission)
-
-    # --------------------  1.7  4点  添加数值更改
-
+        self.zanting_box.clicked.connect(self.Action_stop)
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
@@ -168,14 +163,9 @@ class Ui_Dialog(QWidget):
     def Action(self):
         if self.start_box.isEnabled():
             self.reduce_time.start()
-            # print("成功触发if判断")
     def Action_stop(self):
         print("time stop")
         self.reduce_time.stop()
-    # def Action_left_light_time(self):
-    #     self.ui.start
-    # def Action_left_red(self):
-    #     print("111111111111111111111111111")
     def reduce_time(self):
         totalTime = 5
         if totalTime.isdigit():
@@ -190,7 +180,22 @@ class Ui_Dialog(QWidget):
             print("请输入整数")
         return 0
 
+
+
+    #   2. 三框倒计时
+
     def Refresh_light_time(self):
+        # self.Refresh_left_light_time()
+        # print("左正常")
+        self.Refresh_mid_light_time()
+        print("中正常")
+
+
+
+
+
+
+    def Refresh_left_light_time(self):
         # self.left_light_label.setProperty("value", str(self.main.value_of_hunger))
         print("正在自减红绿灯数值")
         if self.data_model.left_light_count > 0:
@@ -205,18 +210,41 @@ class Ui_Dialog(QWidget):
             self.data_model.left_light_count -= 1
         else:
             self.reduce_time.stop()
-            print("over")
-        # ------------------------若数值到0  测试切换输出
+            print("left_over")
+
+    def Refresh_mid_light_time(self):
+        if self.data_model.mid_light_count > 0:
+            print("1111111")
+            # self.left_light_label.setProperty("value", str(self.data_model.redlight_count))
+            print(self.data_model.mid_light_count)
+            self.lights_count = 1
+            self.left_light_label.setText("中灯运行了：" + str(self.data_model.mid_light_count))
+            self.lights_count += 1
+            self.mid_lightbox.setText("中灯还有：" + str(self.data_model.mid_light_count))
+            self.data_model.left_light_count -= 1
+        else:
+            self.reduce_time.stop()
+            print("mid_over")
+
+
+
+
+
 
     def Action_submission(self):
-        self.data_model.left_light_count = int(self.change_left.setProperty)
-        print("tijiaochenggong")
+        self.data_model.left_light_count=int(self.change_left.toPlainText())
+        self.data_model.mid_light_count=int(self.change_mid.toPlainText())
+        self.data_model.right_light_count=int(self.change_right.toPlainText())
+        self.info = [self.data_model.left_light_count, self.data_model.mid_light_count,self.data_model.right_light_count]
+        print(self.info)
     def Refresh_water(self):
         self.left_light_label.setProperty("value", str(self.main.redlight_count))
         print("jinru ")
 
-        self.mid_lightbox.setProperty("value",str(self.data_model.left_light_count))
+        # 这一句不知道有什么意义
 
+        # self.right_lightbox.setProperty("value",str(self.data_model.left_light_count))
+        #
 
         # self.mid_light_label.setProperty("value", str(self.mainmain.redlight_count))
         # if self.water_count > 0:
@@ -242,7 +270,9 @@ class Ui_Dialog(QWidget):
         #     self.info = ["饥饿值:" + str(self.mainmain.value_of_hunger), "口渴值" + str(self.mainmain.value_of_water)]
         #
         self.left_light_label.setText("运行了：" + str(self.mainmain.redlight_count))
-        print("red倒计时中" + str(self.redlight_count) + '秒')
+        self.mid_light_label.setText("运行了：" + str(self.mainmain.redlight_count))
+        self.right_light_label.setText("运行了：" + str(self.mainmain.redlight_count))
+        # print("red倒计时中" + str(self.redlight_count) + '秒')
         # print("饥饿值：" + str(self.mainmain.value_of_hunger))
         # print("口渴值：" + str(self.mainmain.value_of_water))
         # self.journal.setText(str(self.list))  # 可实现
