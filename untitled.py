@@ -13,6 +13,7 @@ class Ui_Dialog(QWidget):
         Dialog.resize(618, 479)
 
         self.data_model = Basic_function(10, 20, 10);
+        print(self.data_model.left_light_count, self.data_model.mid_light_count, self.data_model.right_light_count)
 
         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
         self.buttonBox.setGeometry(QtCore.QRect(330, 520, 341, 32))
@@ -163,6 +164,7 @@ class Ui_Dialog(QWidget):
     def Action(self):
         if self.start_box.isEnabled():
             self.reduce_time.start()
+
     def Action_stop(self):
         print("time stop")
         self.reduce_time.stop()
@@ -187,13 +189,12 @@ class Ui_Dialog(QWidget):
     def Refresh_light_time(self):
         # self.Refresh_left_light_time()
         # print("左正常")
+
+        self.Refresh_left_light_time()
         self.Refresh_mid_light_time()
-        print("中正常")
-
-
-
-
-
+        # print("中正常")
+        self.lights_count = 1
+        self.lights_count += 1
 
     def Refresh_left_light_time(self):
         # self.left_light_label.setProperty("value", str(self.main.value_of_hunger))
@@ -202,9 +203,7 @@ class Ui_Dialog(QWidget):
             # self.left_light_label.setProperty("value", str(self.data_model.redlight_count))
             print(self.data_model.left_light_count)
             # setProperty忘记作用   settext  文字+数值 非，
-            self.lights_count = 1
             self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_light_count))
-            self.lights_count += 1
             # 1.7凌晨
             self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_light_count))
             self.data_model.left_light_count -= 1
@@ -214,14 +213,14 @@ class Ui_Dialog(QWidget):
 
     def Refresh_mid_light_time(self):
         if self.data_model.mid_light_count > 0:
-            print("1111111")
+            # print("1111111")
             # self.left_light_label.setProperty("value", str(self.data_model.redlight_count))
             print(self.data_model.mid_light_count)
-            self.lights_count = 1
-            self.left_light_label.setText("中灯运行了：" + str(self.data_model.mid_light_count))
-            self.lights_count += 1
+            self.mid_light_label.setText("中灯：" + str(self.data_model.mid_light_count))
             self.mid_lightbox.setText("中灯还有：" + str(self.data_model.mid_light_count))
-            self.data_model.left_light_count -= 1
+            self.data_model.mid_light_count -= 1
+            if self.data_model.mid_light_count > 0 and self.data_model.mid_light_count <3 :
+                print("闪烁")
         else:
             self.reduce_time.stop()
             print("mid_over")
@@ -269,9 +268,9 @@ class Ui_Dialog(QWidget):
         #     self.list.append(self.info)
         #     self.info = ["饥饿值:" + str(self.mainmain.value_of_hunger), "口渴值" + str(self.mainmain.value_of_water)]
         #
-        self.left_light_label.setText("运行了：" + str(self.mainmain.redlight_count))
-        self.mid_light_label.setText("运行了：" + str(self.mainmain.redlight_count))
-        self.right_light_label.setText("运行了：" + str(self.mainmain.redlight_count))
+        # self.left_light_label.setText("运行了：" + str(self.mainmain.redlight_count))
+        # self.mid_light_label.setText("运行了：" + str(self.mainmain.redlight_count))
+        # self.right_light_label.setText("运行了：" + str(self.mainmain.redlight_count))
         # print("red倒计时中" + str(self.redlight_count) + '秒')
         # print("饥饿值：" + str(self.mainmain.value_of_hunger))
         # print("口渴值：" + str(self.mainmain.value_of_water))
