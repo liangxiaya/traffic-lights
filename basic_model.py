@@ -6,6 +6,7 @@ class Basic_function:
 
         # self.greanlight_count = greanlight_count
         self.mid_light_count = midlight_count
+        self.light_twinkle = 2
 
         # self.rightlight_count = rightlight_count
         self.right_light_count = rightlight_count
