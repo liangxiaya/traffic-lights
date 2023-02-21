@@ -3,6 +3,7 @@ class Basic_function:
         # 初始化属性设置
         # self.redlight_count = redlight_count
         self.left_light_count = left_light_count
+        self.left_Green_light_count=left_Green_light_count
 
         # self.greanlight_count = greanlight_count
         self.mid_light_count = midlight_count
@@ -22,8 +23,6 @@ class Basic_function:
         # print("口渴值: ", info['self.value_w'])
         # time.sleep(3)
         return info
-
-
     # def changed_lights(self, redlight_count):
     #     #将读数递减
     #         time.sleep(1)

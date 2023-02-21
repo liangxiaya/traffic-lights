@@ -164,7 +164,6 @@ class Ui_Dialog(QWidget):
     def Action(self):
         if self.start_box.isEnabled():
             self.reduce_time.start()
-
     def Action_stop(self):
         print("time stop")
         self.reduce_time.stop()
@@ -181,18 +180,13 @@ class Ui_Dialog(QWidget):
         else:
             print("请输入整数")
         return 0
-
-
-
     #   2. 三框倒计时
 
     def Refresh_light_time(self):
         # self.Refresh_left_light_time()
         # print("左正常")
-
         self.Refresh_left_light_time()
-        self.Refresh_mid_light_time()
-
+        # self.Refresh_mid_light_time()
         # print("中正常")
         self.lights_count = 1
         self.lights_count += 1
@@ -200,54 +194,45 @@ class Ui_Dialog(QWidget):
     def Refresh_left_light_time(self):
         # self.left_light_label.setProperty("value", str(self.main.value_of_hunger))
         # print("正在自减红绿灯数值")
-
-        if self.data_model.left_light_count > 0:
+        if self.data_model.left_light_count >= 0:
             # self.left_light_label.setProperty("value", str(self.data_model.redlight_count))
             print(self.data_model.left_light_count)
             # setProperty忘记作用   settext  文字+数值 非，
             self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_light_count))
             # 1.7凌晨
             self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_light_count))
-            self.data_model.left_light_count -= 1
-
             # 重新变红完成闪烁
-
-
-
-            if self.data_model.left_light_count > 0 and self.data_model.left_light_count <3 :
-                print("黄灯")
+            if self.data_model.left_light_count <=3 :
                 #  尝试弄闪烁
-                if self.data_model.light_twinkle % 2 ==0:
+                # print( "in flash " + str(self.data_model.left_light_count % 2))
+                if self.data_model.left_light_count % 2 ==0:
                     print("红")
                     self.left_light_twinkle()
                 else:
+                    print("黄")
                     # 255  255 0  是黄色
                     self.left_light_twinkle_two()
-
-            self.data_model.light_twinkle +=1
-
-
-
-
+                # if self.data_model.light_twinkle == 1:
+                #     self.left_light_twinkle()
+            #     if self.data_model.light_twinkle ==1 :
+            #         self.left_light_twinkle()
+            # self.data_model.light_twinkle +=1
+            self.data_model.left_light_count -= 1
         else:
-            self.reduce_time.stop()
+            self.reduce_time .stop()
+            self.data_model.left_light_count =0
             print("left_over")
-
     def left_light_twinkle(self):
         # print("hong ")
-
         self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,0,0)")
         # 这个位置不行  闪烁变红
         # self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,0,0)")
-
-
-
     def left_light_twinkle_two(self):
         # print("黄")
         #   这一行没有生效
         self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,255,0)")
+    def left_Green_light(self):
 
-        print("进入闪烁")
     def Refresh_mid_light_time(self):
         if self.data_model.mid_light_count > 0:
             # print("1111111")
@@ -261,12 +246,6 @@ class Ui_Dialog(QWidget):
         else:
             self.reduce_time.stop()
             print("mid_over")
-
-
-
-
-
-
     def Action_submission(self):
         self.data_model.left_light_count=int(self.change_left.toPlainText())
         self.data_model.mid_light_count=int(self.change_mid.toPlainText())
@@ -276,12 +255,8 @@ class Ui_Dialog(QWidget):
     def Refresh_water(self):
         self.left_light_label.setProperty("value", str(self.main.redlight_count))
         print("jinru ")
-
         # 这一句不知道有什么意义
-
         # self.right_lightbox.setProperty("value",str(self.data_model.left_light_count))
-        #
-
         # self.mid_light_label.setProperty("value", str(self.mainmain.redlight_count))
         # if self.water_count > 0:
         #     # self.start.setText(str(self.count) + '秒')
@@ -293,10 +268,8 @@ class Ui_Dialog(QWidget):
         #     # self.pushButton_3.setText("倒计时：",self.count)
         #     self.label_2.setText("口渴值：" + str(self.mainmain.value_of_water))
         #     print("water倒计时中" + str(self.water_count) + '秒')
-        #
         #     self.water_count -= 1
         #     self.pushButton_4.setText("倒计时：" + str(self.water_count))
-        #
         #     # if self.count == 0:
         #     #     self.changed_water()
         # else:
