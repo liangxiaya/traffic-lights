@@ -1,5 +1,5 @@
 class Basic_function:
-    def __init__(self,left_light_count, midlight_count,rightlight_count):
+    def __init__(self, left_light_count, midlight_count, rightlight_count,left_Green_light_count,mid_Green_light_count,right_Green_light_count):
         # 初始化属性设置
         # self.redlight_count = redlight_count
         self.left_light_count = left_light_count
@@ -7,7 +7,10 @@ class Basic_function:
 
         # self.greanlight_count = greanlight_count
         self.mid_light_count = midlight_count
+        self.mid_Green_light_count=mid_Green_light_count
+
         self.light_twinkle = 2
+        self.right_Green_light_count=right_Green_light_count
 
         # self.rightlight_count = rightlight_count
         self.right_light_count = rightlight_count
