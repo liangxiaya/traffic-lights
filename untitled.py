@@ -197,10 +197,11 @@ class Ui_Dialog(QWidget):
         # self.left_light_label.setProperty("value", str(self.main.value_of_hunger))
         # print("正在自减红绿灯数值")
         if self.data_model.left_light_count >= 0:
+            print("self.data_model.left_light_count", self.data_model.left_light_count)
             # self.left_light_label.setProperty("value", str(self.data_model.redlight_count))
             # print(self.data_model.left_light_count)
             # setProperty忘记作用   settext  文字+数值 非，
-            self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_light_count))
+            self.left_light_label.setText("运行了：" + str(self.data_model.left_light_count))
             # 1.7凌晨
             self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_light_count))
             # 重新变红完成闪烁
@@ -221,10 +222,12 @@ class Ui_Dialog(QWidget):
             # self.data_model.light_twinkle +=1
             self.data_model.left_light_count -= 1
         else:
+            print("self.data_model.left_light_count", self.data_model.left_light_count)
+            print("self.data_model.left_Green_light_count", self.data_model.left_Green_light_count)
+
             # self.reduce_time.stop()
             # self.data_model.left_light_count =0
-
-            if self.data_model.left_Green_light_count >= 0:
+            if self.data_model.left_Green_light_count >0:
                 print(self.data_model.left_light_count)
                 self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_Green_light_count))
                 self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_Green_light_count))
@@ -246,11 +249,10 @@ class Ui_Dialog(QWidget):
                 self.data_model.left_Green_light_count -= 1
             else:
                 # self.reduce_time.stop()
-                self.data_model.left_Green_light_count = 0
-
-
-
-
+                # self.data_model.left_Green_light_count = 0
+                self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_Green_light_count))
+                self.data_model.left_light_count = 10
+                self.data_model.left_Green_light_count =11
                 # self.left_Green_light()
                 print("left_over")
     def left_light_twinkle(self):
@@ -262,6 +264,39 @@ class Ui_Dialog(QWidget):
         # print("黄")
         #   这一行没有生效
         self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,255,0)")
+
+    def left_light_Action(self,rg,twinkle):
+        # print("黄")
+        #   这一行没有生效
+        if twinkle == True:
+            if self.last_twinkle ==False:
+                self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,255,0)")
+                self.last_twinkle = True
+            else:
+                if rg == True:
+                    self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(0,255,0)")
+                else:
+                    self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,0,0)")
+                self.last_twinkle = False
+
+    def time_loop_for_lght(self):
+        self.curr_light_style_flag = True
+        self.running_time = 10
+
+        self.running_time -=1
+
+        if self.running_time >=0:
+            rg = self.curr_light_style_flag
+            twinkle = self.running_time<3
+            self.left_light_Action(rg,twinkle)
+        else:
+            if self.curr_light_style_flag:
+                self.running_time = self.data_model.left_Green_light_count
+                self.curr_light_style_flag=  False
+            else:
+                self.running_time = self.data_model.left_light_count
+                self.curr_light_style_flag=  True
+
 
 
 
@@ -293,7 +328,6 @@ class Ui_Dialog(QWidget):
     def Refresh_water(self):
         self.left_light_label.setProperty("value", str(self.main.redlight_count))
         print("jinru ")
-        # 这一句不知道有什么意义
         # self.right_lightbox.setProperty("value",str(self.data_model.left_light_count))
         # self.mid_light_label.setProperty("value", str(self.mainmain.redlight_count))
         # if self.water_count > 0:
