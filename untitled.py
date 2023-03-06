@@ -205,6 +205,8 @@ class Ui_Dialog(QWidget):
             # 1.7凌晨
             self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_light_count))
             # 重新变红完成闪烁
+
+
             if self.data_model.left_light_count <=3 :
                 #  尝试弄闪烁
                 # print( "in flash " + str(self.data_model.left_light_count % 2))
@@ -215,6 +217,11 @@ class Ui_Dialog(QWidget):
                     # print("黄")
                     # 255  255 0  是黄色
                     self.left_light_twinkle_two()
+
+                self.left_light_Action(rg.)
+
+
+
                 # if self.data_model.light_twinkle == 1:
                 #     self.left_light_twinkle()
             #     if self.data_model.light_twinkle ==1 :
