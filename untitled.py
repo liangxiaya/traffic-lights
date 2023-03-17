@@ -208,8 +208,17 @@ class Ui_Dialog(QWidget):
 
 
             if self.data_model.left_light_count <=3 :
+
+
+
+                self.time_loop_for_lght()
+
+
+
                 #  尝试弄闪烁
                 # print( "in flash " + str(self.data_model.left_light_count % 2))
+
+
                 if self.data_model.left_light_count % 2 ==0:
                     # print("红")
                     self.left_light_twinkle()
@@ -218,7 +227,7 @@ class Ui_Dialog(QWidget):
                     # 255  255 0  是黄色
                     self.left_light_twinkle_two()
 
-                self.left_light_Action(rg.)
+                # self.left_light_Action()
 
 
 
@@ -239,8 +248,18 @@ class Ui_Dialog(QWidget):
                 self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_Green_light_count))
                 self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_Green_light_count))
                 if self.data_model.left_Green_light_count <= 3:
+
+
+                    self.time_loop_for_lght()
+
+
+
                     #  尝试弄闪烁
                     # print( "in flash " + str(self.data_model.left_light_count % 2))
+
+
+
+
                     if self.data_model.left_Green_light_count % 2 == 0:
                         print("绿")
                         self.left_light_twinkle()
@@ -248,6 +267,10 @@ class Ui_Dialog(QWidget):
                         print("黄")
                         # 255  255 0  是黄色
                         self.left_light_twinkle_two()
+
+
+
+
                     # if self.data_model.light_twinkle == 1:
                     #     self.left_light_twinkle()
                 #     if self.data_model.light_twinkle ==1 :
@@ -272,6 +295,14 @@ class Ui_Dialog(QWidget):
         #   这一行没有生效
         self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,255,0)")
 
+
+
+
+# 传参   rg 是true   就是绿灯     就是闪烁           twinkle
+#  255  255  0   是黄色
+#  255  0    0   是红色
+#  0    255  0   是绿色
+
     def left_light_Action(self,rg,twinkle):
         # print("黄")
         #   这一行没有生效
@@ -286,6 +317,12 @@ class Ui_Dialog(QWidget):
                     self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,0,0)")
                 self.last_twinkle = False
 
+
+
+# 无传参   curr_light_style_flag  绿灯？
+#
+#
+#
     def time_loop_for_lght(self):
         self.curr_light_style_flag = True
         self.running_time = 10
