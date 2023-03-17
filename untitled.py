@@ -219,13 +219,20 @@ class Ui_Dialog(QWidget):
                 # print( "in flash " + str(self.data_model.left_light_count % 2))
 
 
-                if self.data_model.left_light_count % 2 ==0:
-                    # print("红")
-                    self.left_light_twinkle()
-                else:
-                    # print("黄")
-                    # 255  255 0  是黄色
-                    self.left_light_twinkle_two()
+
+
+                #     3.18 凌晨尝试修改
+                # if self.data_model.left_light_count % 2 ==0:
+                #     # print("红")
+                #     self.left_light_twinkle()
+                # else:
+                #     # print("黄")
+                #     # 255  255 0  是黄色
+                #     self.left_light_twinkle_two()
+
+
+
+
 
                 # self.left_light_Action()
 
@@ -260,13 +267,13 @@ class Ui_Dialog(QWidget):
 
 
 
-                    if self.data_model.left_Green_light_count % 2 == 0:
-                        print("绿")
-                        self.left_light_twinkle()
-                    else:
-                        print("黄")
-                        # 255  255 0  是黄色
-                        self.left_light_twinkle_two()
+                    # if self.data_model.left_Green_light_count % 2 == 0:
+                    #     print("绿")
+                    #     self.left_light_twinkle()
+                    # else:
+                    #     print("黄")
+                    #     # 255  255 0  是黄色
+                    #     self.left_light_twinkle_two()
 
 
 
@@ -302,12 +309,14 @@ class Ui_Dialog(QWidget):
 #  255  255  0   是黄色
 #  255  0    0   是红色
 #  0    255  0   是绿色
-
+# last_twinkle  没定义
     def left_light_Action(self,rg,twinkle):
         # print("黄")
         #   这一行没有生效
+        self.last_twinkle == False
         if twinkle == True:
             if self.last_twinkle ==False:
+                print("jinru!!!!!!!!!!!!")
                 self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,255,0)")
                 self.last_twinkle = True
             else:
