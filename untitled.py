@@ -185,8 +185,6 @@ class Ui_Dialog(QWidget):
     #   2. 三框倒计时
 
     def Refresh_light_time(self):
-        # self.Refresh_left_light_time()
-        # print("左正常")
         self.Refresh_left_light_time()
         # self.Refresh_mid_light_time()
         # print("中正常")
@@ -198,6 +196,8 @@ class Ui_Dialog(QWidget):
         # print("正在自减红绿灯数值")
         if self.data_model.left_light_count >= 0:
             print("self.data_model.left_light_count", self.data_model.left_light_count)
+            self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,0,0)")
+
             # self.left_light_label.setProperty("value", str(self.data_model.redlight_count))
             # print(self.data_model.left_light_count)
             # setProperty忘记作用   settext  文字+数值 非，
@@ -208,36 +208,18 @@ class Ui_Dialog(QWidget):
 
 
             if self.data_model.left_light_count <=3 :
-
-
-
-                self.time_loop_for_lght()
-
-
-
+                # self.time_loop_for_lght()
                 #  尝试弄闪烁
                 # print( "in flash " + str(self.data_model.left_light_count % 2))
-
-
-
-
                 #     3.18 凌晨尝试修改
-                # if self.data_model.left_light_count % 2 ==0:
-                #     # print("红")
-                #     self.left_light_twinkle()
-                # else:
-                #     # print("黄")
-                #     # 255  255 0  是黄色
-                #     self.left_light_twinkle_two()
-
-
-
-
-
+                if self.data_model.left_light_count % 2 ==0:
+                    # print("红")
+                    self.left_light_twinkle()
+                else:
+                    # print("黄")
+                    # 255  255 0  是黄色
+                    self.left_light_twinkle_two()
                 # self.left_light_Action()
-
-
-
                 # if self.data_model.light_twinkle == 1:
                 #     self.left_light_twinkle()
             #     if self.data_model.light_twinkle ==1 :
@@ -247,44 +229,36 @@ class Ui_Dialog(QWidget):
         else:
             print("self.data_model.left_light_count", self.data_model.left_light_count)
             print("self.data_model.left_Green_light_count", self.data_model.left_Green_light_count)
-
             # self.reduce_time.stop()
             # self.data_model.left_light_count =0
             if self.data_model.left_Green_light_count >0:
                 print(self.data_model.left_light_count)
+                self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(0,255,0)")
                 self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_Green_light_count))
                 self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_Green_light_count))
                 if self.data_model.left_Green_light_count <= 3:
-
-
-                    self.time_loop_for_lght()
-
-
-
                     #  尝试弄闪烁
                     # print( "in flash " + str(self.data_model.left_light_count % 2))
-
-
-
-
-                    # if self.data_model.left_Green_light_count % 2 == 0:
-                    #     print("绿")
-                    #     self.left_light_twinkle()
-                    # else:
-                    #     print("黄")
-                    #     # 255  255 0  是黄色
-                    #     self.left_light_twinkle_two()
-
-
-
-
+                    if self.data_model.left_Green_light_count % 2 == 0:
+                        print("绿")
+                        self.left_light_twinkle()
+                    else:
+                        print("黄")
+                        # 255  255 0  是黄色
+                        self.left_light_twinkle_two()
                     # if self.data_model.light_twinkle == 1:
                     #     self.left_light_twinkle()
                 #     if self.data_model.light_twinkle ==1 :
                 #         self.left_light_twinkle()
                 # self.data_model.light_twinkle +=1
-                self.data_model.left_Green_light_count -= 1
-            else:
+            if self.data_model.left_Green_light_count == 0:
+                if self.data_model.left_Green_light_count % 2 == 0:
+                    print("绿")
+                    self.left_light_twinkle()
+                else:
+                    print("黄")
+                    # 255  255 0  是黄色
+                    self.left_light_twinkle_two()
                 # self.reduce_time.stop()
                 # self.data_model.left_Green_light_count = 0
                 self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_Green_light_count))
@@ -292,6 +266,8 @@ class Ui_Dialog(QWidget):
                 self.data_model.left_Green_light_count =11
                 # self.left_Green_light()
                 print("left_over")
+            self.data_model.left_Green_light_count -= 1
+
     def left_light_twinkle(self):
         # print("hong ")
         self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,0,0)")
