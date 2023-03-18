@@ -186,7 +186,7 @@ class Ui_Dialog(QWidget):
 
     def Refresh_light_time(self):
         self.Refresh_left_light_time()
-        # self.Refresh_mid_light_time()
+        self.Refresh_mid_light_time()
         self.lights_count = 1
         self.lights_count += 1
     def Refresh_left_light_time(self):
@@ -250,6 +250,10 @@ class Ui_Dialog(QWidget):
                 # self.reduce_time.stop()
                 # self.data_model.left_Green_light_count = 0
                 self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_Green_light_count))
+
+                self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_Green_light_count))
+
+
                 self.data_model.left_light_count = 10
                 self.data_model.left_Green_light_count =11
                 # self.left_Green_light()
