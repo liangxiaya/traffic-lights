@@ -18,7 +18,8 @@ class Basic_function:
         # self.rightlight_count = rightlight_count
         self.right_light_count = rightlight_count
 
-
+    def right_change_data(self):
+        self.left_Green_light_count =self.left_Green_light_count
     def get_descriptive_info(self):
         # 返回属性值
         #     info = f'饥饿值：{self.value_of_hunger}\n水份：{self.value_of_water}'

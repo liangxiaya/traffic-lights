@@ -314,16 +314,13 @@ class Ui_Dialog(QWidget):
                 # self.reduce_time.stop()
                 # self.data_model.left_Green_light_count = 0
                 self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_Green_light_count))
-                self.data_model.left_light_count = self.data_model.left_light_count_new
-                self.data_model.left_Green_light_count = self.data_model.left_Green_light_count_new
-
+                # self.data_model.left_light_count = self.data_model.left_light_count_new
+                # self.data_model.left_Green_light_count = self.data_model.left_Green_light_count_new
                 self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_Green_light_count))
-
-
-                self.data_model.left_light_count = 10
-                self.data_model.left_Green_light_count =11
+                self.data_model.left_light_count = 15
+                self.data_model.left_Green_light_count = 11
                 # self.left_Green_light()
-                # print("left_over")
+                print("left_over")
             self.data_model.left_Green_light_count -= 1
     def Refresh_mid_light_time(self):
         if self.data_model.mid_light_count >= 0:
