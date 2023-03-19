@@ -244,7 +244,6 @@ class Ui_Dialog(QWidget):
         self.Refresh_left_light_time()
         # self.Refresh_mid_light_time()
         # self.Refresh_right_light_time()
-        self.Refresh_mid_light_time()
         self.lights_count = 1
         self.lights_count += 1
 
@@ -259,6 +258,8 @@ class Ui_Dialog(QWidget):
                 #  尝试弄闪烁
                 # print( "in flash " + str(self.data_model.left_light_count % 2))
                 #     3.18 凌晨尝试修改
+                #  尝试弄闪烁
+                # print( "in flash " + str(self.data_model.left_light_count % 2))
                 if self.data_model.left_light_count % 2 ==0:
                     # print("红")
                     self.left_light_twinkle()
@@ -267,6 +268,10 @@ class Ui_Dialog(QWidget):
                     # 255  255 0  是黄色
                     self.left_light_twinkle_two()
                 # self.left_light_Action()
+
+
+
+
                 # if self.data_model.light_twinkle == 1:
                 #     self.left_light_twinkle()
             #     if self.data_model.light_twinkle ==1 :
