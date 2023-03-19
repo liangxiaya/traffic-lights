@@ -317,8 +317,17 @@ class Ui_Dialog(QWidget):
                 # self.data_model.left_light_count = self.data_model.left_light_count_new
                 # self.data_model.left_Green_light_count = self.data_model.left_Green_light_count_new
                 self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_Green_light_count))
-                self.data_model.left_light_count = 15
-                self.data_model.left_Green_light_count = 11
+
+
+
+                # 无法恢复初始值。
+                self.data_model.left_light_count = self.data_model.left_light_count
+                self.data_model.left_Green_light_count = self.data_model.left_Green_light_count
+
+
+
+
+
                 # self.left_Green_light()
                 print("left_over")
             self.data_model.left_Green_light_count -= 1
