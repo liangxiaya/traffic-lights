@@ -17,6 +17,9 @@ class Ui_Dialog(QWidget):
         self.data_model = Basic_function(5, 6, 7,8,9,10);
 
 
+
+        # self.data_model.mid_light_count = self.data_model.mid_light_count
+        # self.data_model.mid_Green_light_count = self.data_model.mid_Green_light_count
         # self.data_model.right_light_count_new = self.data_model.right_light_count_new
         # self.left_light_count_new = self.left_light_count_new
         # self.data_model.mid_light_count_new = self.data_model.mid_light_count_new
@@ -241,8 +244,8 @@ class Ui_Dialog(QWidget):
         return 0
     #   2. 三框倒计时
     def Refresh_light_time(self):
-        self.Refresh_left_light_time()
-        # self.Refresh_mid_light_time()
+        # self.Refresh_left_light_time()
+        self.Refresh_mid_light_time()
         # self.Refresh_right_light_time()
         self.lights_count = 1
         self.lights_count += 1
@@ -314,8 +317,8 @@ class Ui_Dialog(QWidget):
                 # self.reduce_time.stop()
                 # self.data_model.left_Green_light_count = 0
                 self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_Green_light_count))
-                self.data_model.left_light_count = self.data_model.left_light_count_new
-                self.data_model.left_Green_light_count = self.data_model.left_Green_light_count_new
+                # self.data_model.left_light_count = self.data_model.left_light_count_new
+                # self.data_model.left_Green_light_count = self.data_model.left_Green_light_count_new
 
                 self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_Green_light_count))
 

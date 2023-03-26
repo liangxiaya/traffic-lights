@@ -8,7 +8,7 @@ class Basic_function:
         self.left_light_count = left_light_count
         self.left_Green_light_count=left_Green_light_count
 
-        # self.greanlight_count = greanlight_count
+        # self.greanl ight_count = greanlight_count
         self.mid_light_count = midlight_count
         self.mid_Green_light_count=mid_Green_light_count
 
