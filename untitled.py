@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import QApplication, QWidget , QVBoxLayout , QListView, QMe
 from PyQt5.QtCore import QStringListModel
 import mainmain
 from basic_model import Basic_function
+import copy
 class Ui_Dialog(QWidget):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
@@ -15,7 +16,7 @@ class Ui_Dialog(QWidget):
         # (self, left_light_count, midlight_count, rightlight_count):
         #               左红  中红  右红   左绿  中绿  右绿
         self.data_model = Basic_function(5, 6, 7,8,9,10);
-
+        self.data_model_copy = copy.copy(self.data_model)
 
 
         # self.data_model.mid_light_count = self.data_model.mid_light_count
@@ -370,6 +371,7 @@ class Ui_Dialog(QWidget):
                     self.mid_light_twinkle_two()
                 self.left_light_label.setText("中灯运行：" + str(self.data_model.mid_Green_light_count))
                 self.data_model.mid_light_count = self.data_model.mid_light_count
+                self.data
                 self.data_model.mid_Green_light_count =self.data_model.mid_Green_light_count
                 # print("mid_over")
             self.data_model.mid_Green_light_count -= 1
