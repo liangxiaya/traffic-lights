@@ -19,16 +19,16 @@ class Ui_Dialog(QWidget):
         self.data_model_copy = copy.copy(self.data_model)
 
 
-        # self.data_model.mid_light_count = self.data_model.mid_light_count
-        # self.data_model.mid_Green_light_count = self.data_model.mid_Green_light_count
-        # self.data_model.right_light_count_new = self.data_model.right_light_count_new
+        # self.data_model_copy.mid_light_count = self.data_model_copy.mid_light_count
+        # self.data_model_copy.mid_Green_light_count = self.data_model_copy.mid_Green_light_count
+        # self.data_model_copy.right_light_count_new = self.data_model_copy.right_light_count_new
         # self.left_light_count_new = self.left_light_count_new
-        # self.data_model.mid_light_count_new = self.data_model.mid_light_count_new
+        # self.data_model_copy.mid_light_count_new = self.data_model_copy.mid_light_count_new
 
 
 
 
-        print(self.data_model.left_light_count, self.data_model.mid_light_count, self.data_model.right_light_count)
+        print(self.data_model_copy.left_light_count, self.data_model_copy.mid_light_count, self.data_model_copy.right_light_count)
 
         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
         self.buttonBox.setGeometry(QtCore.QRect(330, 520, 341, 32))
@@ -252,19 +252,19 @@ class Ui_Dialog(QWidget):
         self.lights_count += 1
 
     def Refresh_left_light_time(self):
-        if self.data_model.left_light_count >= 0:
-            # print("self.data_model.left_light_count", self.data_model.left_light_count)
+        if self.data_model_copy.left_light_count >= 0:
+            # print("self.data_model_copy.left_light_count", self.data_model_copy.left_light_count)
             self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,0,0)")
-            self.left_light_label.setText("运行了：" + str(self.data_model.left_light_count))
-            self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_light_count))
-            if self.data_model.left_light_count <=3 :
+            self.left_light_label.setText("运行了：" + str(self.data_model_copy.left_light_count))
+            self.left_lightbox.setText("左灯还有：" + str(self.data_model_copy.left_light_count))
+            if self.data_model_copy.left_light_count <=3 :
                 # self.time_loop_for_lght()
                 #  尝试弄闪烁
-                # print( "in flash " + str(self.data_model.left_light_count % 2))
+                # print( "in flash " + str(self.data_model_copy.left_light_count % 2))
                 #     3.18 凌晨尝试修改
                 #  尝试弄闪烁
-                # print( "in flash " + str(self.data_model.left_light_count % 2))
-                if self.data_model.left_light_count % 2 ==0:
+                # print( "in flash " + str(self.data_model_copy.left_light_count % 2))
+                if self.data_model_copy.left_light_count % 2 ==0:
                     # print("红")
                     self.left_light_twinkle()
                 else:
@@ -276,39 +276,39 @@ class Ui_Dialog(QWidget):
 
 
 
-                # if self.data_model.light_twinkle == 1:
+                # if self.data_model_copy.light_twinkle == 1:
                 #     self.left_light_twinkle()
-            #     if self.data_model.light_twinkle ==1 :
+            #     if self.data_model_copy.light_twinkle ==1 :
             #         self.left_light_twinkle()
-            # self.data_model.light_twinkle +=1
-            self.data_model.left_light_count -= 1
+            # self.data_model_copy.light_twinkle +=1
+            self.data_model_copy.left_light_count -= 1
         else:
-            # print("self.data_model.left_light_count", self.data_model.left_light_count)
-            # print("self.data_model.left_Green_light_count", self.data_model.left_Green_light_count)
+            # print("self.data_model_copy.left_light_count", self.data_model_copy.left_light_count)
+            # print("self.data_model_copy.left_Green_light_count", self.data_model_copy.left_Green_light_count)
             # self.reduce_time.stop()
-            # self.data_model.left_light_count =0
-            if self.data_model.left_Green_light_count >0:
-                # print(self.data_model.left_light_count)
+            # self.data_model_copy.left_light_count =0
+            if self.data_model_copy.left_Green_light_count >0:
+                # print(self.data_model_copy.left_light_count)
                 self.left_lightbox.setStyleSheet("color:white;\n""background-color:rgb(0,255,0)")
-                self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_Green_light_count))
-                self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_Green_light_count))
-                if self.data_model.left_Green_light_count <= 3:
+                self.left_light_label.setText("左灯运行了：" + str(self.data_model_copy.left_Green_light_count))
+                self.left_lightbox.setText("左灯还有：" + str(self.data_model_copy.left_Green_light_count))
+                if self.data_model_copy.left_Green_light_count <= 3:
                     #  尝试弄闪烁
-                    # print( "in flash " + str(self.data_model.left_light_count % 2))
-                    if self.data_model.left_Green_light_count % 2 == 0:
+                    # print( "in flash " + str(self.data_model_copy.left_light_count % 2))
+                    if self.data_model_copy.left_Green_light_count % 2 == 0:
                         # print("绿")
                         self.left_light_twinkle()
                     else:
                         # print("黄")
                         # 255  255 0  是黄色
                         self.left_light_twinkle_two()
-                    # if self.data_model.light_twinkle == 1:
+                    # if self.data_model_copy.light_twinkle == 1:
                     #     self.left_light_twinkle()
-                #     if self.data_model.light_twinkle ==1 :
+                #     if self.data_model_copy.light_twinkle ==1 :
                 #         self.left_light_twinkle()
-                # self.data_model.light_twinkle +=1
-            if self.data_model.left_Green_light_count == 0:
-                if self.data_model.left_Green_light_count % 2 == 0:
+                # self.data_model_copy.light_twinkle +=1
+            if self.data_model_copy.left_Green_light_count == 0:
+                if self.data_model_copy.left_Green_light_count % 2 == 0:
                     # print("绿")
                     self.left_light_twinkle()
                 else:
@@ -316,17 +316,17 @@ class Ui_Dialog(QWidget):
                     # 255  255 0  是黄色
                     self.left_light_twinkle_two()
                 # self.reduce_time.stop()
-                # self.data_model.left_Green_light_count = 0
-                self.left_light_label.setText("左灯运行了：" + str(self.data_model.left_Green_light_count))
-                # self.data_model.left_light_count = self.data_model.left_light_count_new
-                # self.data_model.left_Green_light_count = self.data_model.left_Green_light_count_new
-                self.left_lightbox.setText("左灯还有：" + str(self.data_model.left_Green_light_count))
+                # self.data_model_copy.left_Green_light_count = 0
+                self.left_light_label.setText("左灯运行了：" + str(self.data_model_copy.left_Green_light_count))
+                # self.data_model_copy.left_light_count = self.data_model_copy.left_light_count_new
+                # self.data_model_copy.left_Green_light_count = self.data_model_copy.left_Green_light_count_new
+                self.left_lightbox.setText("左灯还有：" + str(self.data_model_copy.left_Green_light_count))
 
 
 
                 # 无法恢复初始值。
-                self.data_model.left_light_count = self.data_model.left_light_count
-                self.data_model.left_Green_light_count = self.data_model.left_Green_light_count
+                self.data_model_copy.left_light_count = self.data_model_copy.left_light_count
+                self.data_model_copy.left_Green_light_count = self.data_model_copy.left_Green_light_count
 
 
 
@@ -334,86 +334,86 @@ class Ui_Dialog(QWidget):
 
                 # self.left_Green_light()
                 print("left_over")
-            self.data_model.left_Green_light_count -= 1
+            self.data_model_copy.left_Green_light_count -= 1
     def Refresh_mid_light_time(self):
-        if self.data_model.mid_light_count >= 0:
-            # print("self.data_model.mid_light_count", self.data_model.mid_light_count)
+        if self.data_model_copy.mid_light_count >= 0:
+            # print("self.data_model_copy.mid_light_count", self.data_model_copy.mid_light_count)
             self.mid_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,0,0)")
-            self.mid_light_label.setText("运行了：" + str(self.data_model.mid_light_count))
-            self.mid_lightbox.setText("左灯还有：" + str(self.data_model.mid_light_count))
-            if self.data_model.mid_light_count <=3 :
-                if self.data_model.mid_light_count % 2 ==0:
+            self.mid_light_label.setText("运行了：" + str(self.data_model_copy.mid_light_count))
+            self.mid_lightbox.setText("左灯还有：" + str(self.data_model_copy.mid_light_count))
+            if self.data_model_copy.mid_light_count <=3 :
+                if self.data_model_copy.mid_light_count % 2 ==0:
                     self.mid_light_twinkle()
                 else:
                     self.mid_light_twinkle_two()
-            self.data_model.mid_light_count -= 1
+            self.data_model_copy.mid_light_count -= 1
         else:
-            # print("self.data_model.mid_light_count", self.data_model.mid_light_count)
-            # print("self.data_model.mid_Green_light_count", self.data_model.mid_Green_light_count)
-            if self.data_model.mid_Green_light_count >0:
-                # print(self.data_model.mid_light_count)
+            # print("self.data_model_copy.mid_light_count", self.data_model_copy.mid_light_count)
+            # print("self.data_model_copy.mid_Green_light_count", self.data_model_copy.mid_Green_light_count)
+            if self.data_model_copy.mid_Green_light_count >0:
+                # print(self.data_model_copy.mid_light_count)
                 self.mid_lightbox.setStyleSheet("color:white;\n""background-color:rgb(0,255,0)")
-                self.mid_light_label.setText("中灯运行：" + str(self.data_model.mid_Green_light_count))
-                self.mid_lightbox.setText("中灯还有：" + str(self.data_model.mid_Green_light_count))
-                if self.data_model.mid_Green_light_count <= 3:
-                    if self.data_model.mid_Green_light_count % 2 == 0:
+                self.mid_light_label.setText("中灯运行：" + str(self.data_model_copy.mid_Green_light_count))
+                self.mid_lightbox.setText("中灯还有：" + str(self.data_model_copy.mid_Green_light_count))
+                if self.data_model_copy.mid_Green_light_count <= 3:
+                    if self.data_model_copy.mid_Green_light_count % 2 == 0:
                         # print("绿")
                         self.mid_light_twinkle()
                     else:
                         # print("黄")
                         self.mid_light_twinkle_two()
-            if self.data_model.mid_Green_light_count == 0:
-                if self.data_model.mid_Green_light_count % 2 == 0:
+            if self.data_model_copy.mid_Green_light_count == 0:
+                if self.data_model_copy.mid_Green_light_count % 2 == 0:
                     # print("绿")
                     self.mid_light_twinkle()
                 else:
                     # print("黄")
                     self.mid_light_twinkle_two()
-                self.left_light_label.setText("中灯运行：" + str(self.data_model.mid_Green_light_count))
-                self.data_model.mid_light_count = self.data_model.mid_light_count
+                self.left_light_label.setText("中灯运行：" + str(self.data_model_copy.mid_Green_light_count))
+                self.data_model_copy.mid_light_count = self.data_model_copy.mid_light_count
                 self.data
-                self.data_model.mid_Green_light_count =self.data_model.mid_Green_light_count
+                self.data_model_copy.mid_Green_light_count =self.data_model_copy.mid_Green_light_count
                 # print("mid_over")
-            self.data_model.mid_Green_light_count -= 1
+            self.data_model_copy.mid_Green_light_count -= 1
     def Refresh_right_light_time(self):
-        if self.data_model.right_light_count >= 0:
-            # print("self.data_model.right_light_count", self.data_model.right_light_count)
+        if self.data_model_copy.right_light_count >= 0:
+            # print("self.data_model_copy.right_light_count", self.data_model_copy.right_light_count)
             self.right_lightbox.setStyleSheet("color:white;\n""background-color:rgb(255,0,0)")
-            self.right_light_label.setText("运行了：" + str(self.data_model.right_light_count))
-            self.right_lightbox.setText("左灯还有：" + str(self.data_model.right_light_count))
-            if self.data_model.right_light_count <=3 :
-                if self.data_model.right_light_count % 2 ==0:
+            self.right_light_label.setText("运行了：" + str(self.data_model_copy.right_light_count))
+            self.right_lightbox.setText("左灯还有：" + str(self.data_model_copy.right_light_count))
+            if self.data_model_copy.right_light_count <=3 :
+                if self.data_model_copy.right_light_count % 2 ==0:
                     self.right_light_twinkle()
                 else:
                     self.right_light_twinkle_two()
-            self.data_model.right_light_count -= 1
+            self.data_model_copy.right_light_count -= 1
         else:
-            # print("self.data_model.mid_light_count", self.data_model.right_light_count)
-            # print("self.data_model.mid_Green_light_count", self.data_model.right_Green_light_count)
-            if self.data_model.right_Green_light_count >0:
-                # print(self.data_model.right_light_count)
+            # print("self.data_model_copy.mid_light_count", self.data_model_copy.right_light_count)
+            # print("self.data_model_copy.mid_Green_light_count", self.data_model_copy.right_Green_light_count)
+            if self.data_model_copy.right_Green_light_count >0:
+                # print(self.data_model_copy.right_light_count)
                 self.right_lightbox.setStyleSheet("color:white;\n""background-color:rgb(0,255,0)")
-                self.right_light_label.setText("中灯运行：" + str(self.data_model.right_Green_light_count))
-                self.right_lightbox.setText("中灯还有：" + str(self.data_model.right_Green_light_count))
-                if self.data_model.right_Green_light_count <= 3:
-                    if self.data_model.right_Green_light_count % 2 == 0:
+                self.right_light_label.setText("中灯运行：" + str(self.data_model_copy.right_Green_light_count))
+                self.right_lightbox.setText("中灯还有：" + str(self.data_model_copy.right_Green_light_count))
+                if self.data_model_copy.right_Green_light_count <= 3:
+                    if self.data_model_copy.right_Green_light_count % 2 == 0:
                         # print("绿")
                         self.right_light_twinkle()
                     else:
                         # print("黄")
                         self.right_light_twinkle_two()
-            if self.data_model.right_Green_light_count == 0:
-                if self.data_model.right_Green_light_count % 2 == 0:
+            if self.data_model_copy.right_Green_light_count == 0:
+                if self.data_model_copy.right_Green_light_count % 2 == 0:
                     # print("绿")
                     self.right_light_twinkle()
                 else:
                     # print("黄")
                     self.right_light_twinkle_two()
-                self.right_light_label.setText("中灯运行：" + str(self.data_model.right_Green_light_count))
-                self.data_model.right_light_count = self.data_model.right_light_count
-                self.data_model.right_Green_light_count =self.data_model.right_Green_light_count
+                self.right_light_label.setText("中灯运行：" + str(self.data_model_copy.right_Green_light_count))
+                self.data_model_copy.right_light_count = self.data_model_copy.right_light_count
+                self.data_model_copy.right_Green_light_count =self.data_model_copy.right_Green_light_count
                 # print("mid_over")
-            self.data_model.right_Green_light_count -= 1
+            self.data_model_copy.right_Green_light_count -= 1
 
     def left_light_twinkle(self):
         # print("hong ")
@@ -480,38 +480,40 @@ class Ui_Dialog(QWidget):
             self.left_light_Action(rg,twinkle)
         else:
             if self.curr_light_style_flag:
-                self.running_time = self.data_model.left_Green_light_count
+                self.running_time = self.data_model_copy.left_Green_light_count
                 self.curr_light_style_flag=  False
             else:
-                self.running_time = self.data_model.left_light_count
+                self.running_time = self.data_model_copy.left_light_count
                 self.curr_light_style_flag=  True
 
     # def Refresh_mid_light_time(self):
-    #     if self.data_model.mid_light_count > 0:
+    #     if self.data_model_copy.mid_light_count > 0:
     #         # print("1111111")
-    #         # self.left_light_label.setProperty("value", str(self.data_model.redlight_count))
-    #         print(self.data_model.mid_light_count)
-    #         self.mid_light_label.setText("中灯：" + str(self.data_model.mid_light_count))
-    #         self.mid_lightbox.setText("中灯还有：" + str(self.data_model.mid_light_count))
-    #         self.data_model.mid_light_count -= 1
-    #         if self.data_model.mid_light_count > 0 and self.data_model.mid_light_count <3 :
+    #         # self.left_light_label.setProperty("value", str(self.data_model_copy.redlight_count))
+    #         print(self.data_model_copy.mid_light_count)
+    #         self.mid_light_label.setText("中灯：" + str(self.data_model_copy.mid_light_count))
+    #         self.mid_lightbox.setText("中灯还有：" + str(self.data_model_copy.mid_light_count))
+    #         self.data_model_copy.mid_light_count -= 1
+    #         if self.data_model_copy.mid_light_count > 0 and self.data_model_copy.mid_light_count <3 :
     #             print("闪烁")
     #     else:
     #         self.reduce_time.stop()
-    #         print("mid_over")
+    #         print("mid_over")x
     def Action_submission(self):
-        self.data_model.left_light_count = int(self.change_left_red.toPlainText())
-        self.data_model.mid_light_count = int(self.change_mid_red.toPlainText())
-        self.data_model.right_light_count = int(self.change_right_red.toPlainText())
-        self.data_model.left_Green_light_count = int(self.change_left.toPlainText())
-        self.data_model.mid_Green_light_count = int(self.change_mid.toPlainText())
-        self.data_model.right_Green_light_count = int(self.change_right.toPlainText())
-        # self.info = [self.data_model.left_light_count, self.data_model.mid_light_count,self.data_model.right_light_count]
+        self.data_model_copy.left_light_count = int(self.change_left_red.toPlainText())
+        self.data_model_copy.mid_light_count = int(self.change_mid_red.toPlainText())
+        self.data_model_copy.right_light_count = int(self.change_right_red.toPlainText())
+        self.data_model_copy.left_Green_light_count = int(self.change_left.toPlainText())
+        self.data_model_copy.mid_Green_light_count = int(self.change_mid.toPlainText())
+        self.data_model_copy.right_Green_light_count = int(self.change_right.toPlainText())
+        # self.info = [self.data_model_copy.left_light_count, self.data_model_copy.mid_light_count,self.data_model_copy.right_light_count]
+
+        self.data_model_copy=self.data_model
         # print(self.info)
     def Refresh_water(self):
         self.left_light_label.setProperty("value", str(self.main.redlight_count))
         print("jinru ")
-        # self.right_lightbox.setProperty("value",str(self.data_model.left_light_count))
+        # self.right_lightbox.setProperty("value",str(self.data_model_copy.left_light_count))
         # self.mid_light_label.setProperty("value", str(self.mainmain.redlight_count))
         # if self.water_count > 0:
         #     # self.start.setText(str(self.count) + '秒')
