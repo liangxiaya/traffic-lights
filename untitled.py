@@ -9,6 +9,9 @@ import mainmain
 from basic_model import Basic_function
 import copy
 class Ui_Dialog(QWidget):
+    def other_lights(self):
+
+        
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(618, 479)
