@@ -34,7 +34,7 @@ from PyQt5 import *
 import sys
 from PyQt5.QtWidgets import QApplication, QDialog,QMainWindow
 from PyQt5.QtGui import QIcon
-import untitled
+import untitled_new
 
 
 if __name__ == '__main__':

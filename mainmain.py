@@ -8,7 +8,7 @@ import os
 # from PyQt5.QtCore import QBasicTimer
 from PyQt5.QtWidgets import QMainWindow, QPushButton , QWidget , QMessageBox, QApplication, QDialog,QHBoxLayout
 import sys
-import untitled
+import untitled_new
 
 class Basic_function:
     def __init__(self,value_of_hunger, value_of_water):
@@ -96,7 +96,7 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     MainWindow = QDialog()
-    ui=untitled.Ui_Dialog()
+    ui=untitled_new.Ui_Dialog()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

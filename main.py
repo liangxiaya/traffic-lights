@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QMainWindow, QPushButton , QWidget , QMessageBox, QA
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QTimer
-import untitled
+import untitled_new
 
 
 
