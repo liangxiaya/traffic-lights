@@ -9,15 +9,16 @@ import mainmain
 from basic_model import Basic_function
 import copy
 class Ui_Dialog(QWidget):
-    def other_lights(self):
+    # def other_lights(self):
 
-        
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(618, 479)
-
+        first_lights=[5, 6, 7,8,9,10]
+        second_lights=[15, 16, 17,18,19,20]
         # (self, left_light_count, midlight_count, rightlight_count):
         #               左红  中红  右红   左绿  中绿  右绿
+        # self.data_model = Basic_function(5, 6, 7,8,9,10);
         self.data_model = Basic_function(5, 6, 7,8,9,10);
         self.data_model_copy = copy.copy(self.data_model)
 
